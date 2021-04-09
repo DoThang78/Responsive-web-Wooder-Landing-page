@@ -1,0 +1,43 @@
+// css button, title, icon, elements...
+img {
+    max-width: 100%;
+}
+
+.btnmore {
+    display: inline-flex;
+    align-items: center;
+    font-family: "pb";
+    letter-spacing: 2px;
+    font-size: 14px;
+    color: $black-cl;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    img {
+        display: flex;
+        width: 30px;
+        height: 7px;
+        margin-left: 10px;
+        @include transition($t);
+        @include transform(translate(0px));
+    }
+    &::before {
+        content: "";
+        width: 35px;
+        height: 2px;
+        background-color: $yellow-cl;
+        display: block;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+    }
+    // img {
+    //     position: relative;
+    // }
+    &:hover {
+        img {
+            @include transition($t);
+            @include transform(translate(10px));
+        }
+    }
+}

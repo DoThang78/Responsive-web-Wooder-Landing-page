@@ -1,0 +1,123 @@
+// css components
+.textbox {
+    --pdTextbox: 100px;
+    padding-left: var(--pdTextbox);
+    padding-right: 30px;
+    padding-top: 80px;
+    .titlemain {
+        font-size: 40px;
+        font-family: "pb";
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $black-cl;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        padding-bottom: 24px;
+        line-height: normal;
+        &::before {
+            content: "";
+            width: 80px;
+            height: 2px;
+            background-color: #555555;
+            position: relative;
+            margin-left: -80px;
+            left: -20px;
+        }
+        &.--yellow {
+            color: $yellow-cl;
+        }
+        &.--white {
+            color: $white-cl;
+            padding-bottom: 10px;
+        }
+    }
+    .description {
+        padding: 10px 0px 24px 0;
+        color: #464646;
+        font-family: "pr";
+        &.--white {
+            color: $white-cl;
+        }
+    }
+    &.--textright {
+        text-align: right;
+        padding-left: 30px;
+        padding-right: var(--pdTextbox);
+        .titlemain {
+            flex-direction: row-reverse;
+            &::before {
+                position: relative;
+                margin-left: initial;
+                left: initial;
+                margin-right: -80px;
+                right: -20px;
+            }
+        }
+    }
+    &.--textcenter {
+        max-width: 460px;
+        margin: auto;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        text-align: center;
+        .titlemain {
+            flex-direction: column-reverse;
+            &::before {
+                width: 40px;
+                height: 2px;
+                background-color: $yellow-cl;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 10px;
+                left: initial;
+                right: initial;
+                bottom: -20px;
+            }
+        }
+    }
+    &.--textleft {
+        text-align: left;
+        margin-left: 70px;
+        padding: 70px 0 0 0;
+        .titlemain {
+            &::before {
+                position: relative;
+                margin-left: initial;
+                left: -100px;
+                margin-right: -80px;
+                right: -20px;
+            }
+        }
+    }
+
+    //responsive
+    @media (max-width: 1199px) {
+        // large tablet
+        padding-top: 40px;
+    }
+    @media (max-width: 991px) {
+        // mini tablet
+        --pdTextbox: 0px;
+        padding-left: var(--pdTextbox);
+        padding-right: 30px;
+        padding-top: 20px;
+        .titlemain {
+            &::before {
+                display: none;
+            }
+        }
+    }
+    @media (max-width: 767px) {
+        .titlemain {
+            font-size: 32px;
+            line-height: normal;
+        }
+    }
+    @media (max-width: 575px) {
+        .titlemain {
+            font-size: 29px;
+        }
+    }
+}

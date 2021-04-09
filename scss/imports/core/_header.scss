@@ -1,0 +1,263 @@
+// css header
+header {
+    width: 100%;
+    max-width: $container-max-width;
+    position: fixed;
+    height: var(--heightHeader);
+    top: 0;
+    left: 0;
+    transition: 0.3s;
+    z-index: 200;
+    &.active {
+        background-color: $black-cl;
+        transition: 0.3s;
+    }
+    .container-fluid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+    }
+    .logo {
+        h1 {
+            display: none;
+        }
+    }
+    .menu {
+        display: flex;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+        height: 100%;
+        li {
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                text-decoration: none;
+                padding: 0 30px;
+                text-transform: uppercase;
+                font-size: $fz-text;
+                line-height: 22px;
+                opacity: 0.5;
+                color: $white-cl;
+                @include transition($t);
+                font-family: "pb";
+                &:hover,
+                &.active {
+                    color: $yellow-cl;
+                    @include transition($t);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .right {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        .lang {
+            height: 100%;
+            position: relative;
+            &__current {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                img {
+                    cursor: pointer;
+                    width: 10px;
+                }
+                span {
+                    font-size: $fz-text;
+                    line-height: 22px;
+                    opacity: 0.5;
+                    color: $white-cl;
+                    text-transform: uppercase;
+                    font-family: "pb";
+                    margin-right: 8px;
+                    cursor: pointer;
+                }
+            }
+            &__option {
+                position: absolute;
+                background-color: #353535;
+                top: var(--heightHeader);
+                right: -6px;
+                z-index: 198;
+                @include transition($t);
+                @include visible(0);
+                a {
+                    opacity: 0.5;
+                    padding: 7px 20px;
+                    display: block;
+                    color: $white-cl;
+                    font-family: "pb";
+                    text-decoration: none;
+                    @include transition($t);
+                    &:first-child {
+                        padding-top: 12px;
+                    }
+                    &:last-child {
+                        padding-bottom: 12px;
+                    }
+                    &:hover {
+                        color: $yellow-cl;
+                        @include transition($t);
+                        opacity: 1;
+                    }
+                }
+            }
+            &.active {
+                .lang__option {
+                    @include transition($t);
+                    @include visible(1);
+                }
+            }
+        }
+        .hamburger {
+            width: 25px;
+            height: 15px;
+            position: relative;
+            margin-left: 20px;
+            display: none;
+            cursor: pointer;
+            // span::after,
+            // span::before {
+            //     content: "";
+            //     position: absolute;
+            //     width: 100%;
+            //     height: 2px;
+            //     background-color: $white-cl;
+            // }
+            // span::after {
+            //     bottom: 0;
+            // }
+            // span {
+            //     position: absolute;
+            //     width: 100%;
+            //     height: 2px;
+            //     background-color: $white-cl;
+            // }
+            // span::before {
+            //     top: 0;
+            // }
+            span,
+            &:after,
+            &:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: $white-cl;
+                @include transition($t);
+                display: block;
+            }
+            span {
+                top: 50%;
+                @include transition($t);
+                transform: translateY(-50%);
+            }
+            &:after {
+                bottom: 0;
+            }
+            &.active {
+                @include transition($t);
+                @include transform(rotate(-45deg));
+                &:before {
+                    opacity: 0;
+                    @include transition($t);
+                }
+                &::after {
+                    @include transition($t);
+                    @include transform(rotate(90deg));
+                    top: 50%;
+                }
+            }
+        }
+    }
+}
+
+//responsive
+@media (max-width: 1140px) {
+    //tablet
+    header {
+        .menu {
+            li {
+                a {
+                    padding: 0 15px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    //tablet
+    header {
+        background: $black-cl;
+        height: var(--heightHeader);
+        .menu {
+            display: none;
+        }
+        .logo {
+            width: 140px;
+        }
+        .right {
+            .hamburger {
+                display: block;
+            }
+        }
+    }
+}
+// @media (max-width: 767px) {
+//     //mobile
+//     header {
+//         background: $black-cl;
+//         height: var(--heightHeader);
+//         .menu {
+//             display: none;
+//         }
+//         .logo {
+//             width: 140px;
+//         }
+//         .right {
+//             .hamburger {
+//                 display: block;
+//             }
+//         }
+//     }
+// }
+// @media (max-width: 370px) {
+//     //tablet
+//     header {
+//         background: $black-cl;
+//         height: var(--heightHeader);
+//         .menu {
+//             display: none;
+//         }
+//         .logo {
+//             width: 120px;
+//         }
+//         .right {
+//             .lang {
+//                 &__current {
+//                     span {
+//                         font-size: 15px;
+//                     }
+//                 }
+//                 &__option {
+//                     a {
+//                         font-size: 15px;
+//                         padding: 5px 15px;
+//                     }
+//                 }
+//             }
+//             .hamburger {
+//                 width: 20px;
+//                 height: 13px;
+//                 display: block;
+//             }
+//         }
+//     }
+// }

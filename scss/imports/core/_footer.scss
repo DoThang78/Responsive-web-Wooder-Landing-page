@@ -1,0 +1,56 @@
+// css footer
+footer {
+    padding: 25px 0;
+    background: $black-cl;
+    color: #b0b0b0;
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+    .logoft {
+        position: absolute;
+        left: 50%;
+        @include transform(translateX(-50%));
+    }
+    .backtotop {
+        a {
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #b0b0b0;
+            text-decoration: none;
+        }
+    }
+    @media (max-width: 767px) {
+        .container {
+            flex-direction: column;
+        }
+        .logoft {
+            position: initial;
+            margin: 20px auto;
+            left: initial;
+            @include transform(initial);
+        }
+    }
+}
+
+.totop {
+    position: fixed;
+    width: 75px;
+    z-index: 200;
+    background-color: $yellow-cl;
+    right: 20px;
+    bottom: 40px;
+    text-align: center;
+    color: $white-cl;
+    cursor: pointer;
+    transition: 0.3s;
+    pointer-events: none;
+    opacity: 0;
+    &.active {
+        pointer-events: auto;
+        opacity: 1;
+        transition: 0.3s;
+    }
+}
